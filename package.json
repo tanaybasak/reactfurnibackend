@@ -4,10 +4,7 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index",
-    "server": "NODE_ENV=development netlify-lambda serve src",
-    "build": "NODE_ENV=production netlify-lambda build src"
+    "start": "nodemon index"
   },
   "keywords": [],
   "author": "",
@@ -28,12 +25,10 @@
     "graphql": "^16.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
-    "mysql": "^2.18.1",
-    "netlify-lambda": "^2.0.15",
-    "serverless-http": "^1.9.1"
+    "mysql": "^2.18.1"
   },
   "engine": {
-    "node": "18.x"
+    "node": "18.12.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
