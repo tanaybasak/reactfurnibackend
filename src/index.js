@@ -17,7 +17,7 @@ const startApolloServer = async () => {
   await server.start();
   server.applyMiddleware({ app, path: "/graphql" });
 
-  app.listen(3000, () => {
+  app.listen(process.env.PORT || 5000, () => {
     console.log("Running GraphQL Server....");
   });
 };
