@@ -1,0 +1,63 @@
+type Query { #read operations
+  products(limit: Int!, afterCursor: String): ProductResult
+  productsByPrice(min: Float!, max: Float!): [Product]
+  productsById(id: ID!): Product
+}
+
+type Mutation { #write operations
+  addNewProduct(
+    id: ID!
+    description: String!
+    price: Float!
+    image: String!
+  ): Product
+  addNewProductReview(id: ID!, rating: Int!, comment: String): Review
+  addNewProductOverview(id: ID!, sku: String!, seater: String!, finish: String!, material: String!, color: String!, features: String!, brand: String!) : Overview
+}
+
+type Product {
+  id: Int!
+  name: String!
+  image: String!
+  description: String!
+  reviews: [Review]
+  quantity: Int!
+  overview: [Overview]
+  price: Pricing!
+}
+
+type Pricing {
+  initialPrice : Float!
+  totalPrice: Float!
+}
+
+type Edge {
+  node: Product
+  cursor: String
+}
+
+type PageInfo {
+  startCursor: String
+  hasNextPage: Boolean
+}
+
+type ProductResult {
+  totalCount: Int
+  edges: [Edge]
+  pageInfo: PageInfo
+}
+
+type Review {
+  rating: Int!
+  comment: String
+}
+
+type Overview {
+  sku: String!
+  seater: String!
+  finish: String!
+  material: String!
+  color: String!
+  features: String!
+  brand: String!
+}

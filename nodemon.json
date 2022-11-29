@@ -1,0 +1,10 @@
+{
+    "env" : {
+        "MONGO_USER" : "admindb",
+        "MONGO_PASSWORD" : "admindb",
+        "MONGO_DB" : "products"
+
+    }
+}
+
+

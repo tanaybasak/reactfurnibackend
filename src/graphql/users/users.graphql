@@ -1,0 +1,31 @@
+type Query { #read operations
+  users: [User!]!
+}
+
+type Address {
+  location: String!
+  city: String!
+  state: String!
+  country: String!
+  pinCode: Int!
+}
+
+interface User {
+  name: String!
+  surname: String!
+  address: [Address!]!
+}
+
+type Customer implements User {
+  customerId: ID!
+  name: String!
+  surname: String!
+  address: [Address!]!
+}
+
+type Seller implements User {
+  sellerId: ID!
+  name: String!
+  surname: String!
+  address: [Address!]!
+}

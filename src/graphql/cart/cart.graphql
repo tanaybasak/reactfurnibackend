@@ -1,0 +1,11 @@
+type Query {
+  cartItems: CartResults
+}
+
+type Mutation { #write operations
+  addToCart(id: ID!): CartResults
+}
+
+type CartResults {
+  items: [Product]!
+}
