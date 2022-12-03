@@ -22,8 +22,9 @@ const startApolloServer = async () => {
   });
 };
 
-app.use(cors());
 app.use('/', authMiddleware);
+app.use(cors());
+
 startApolloServer();
 // db_connection
 //   .then(() => {
