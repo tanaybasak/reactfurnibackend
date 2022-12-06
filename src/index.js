@@ -1,12 +1,11 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const { ApolloServer } = require("apollo-server-express");
 const authMiddleware = require('./middleware/auth-middleware');
 const graphQlSchema = require("./graphql/schema/index");
 const cors = require('cors');
 // const isAuth = require("./middleware/is-auth");
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 
 const startApolloServer = async () => {
@@ -21,9 +20,9 @@ const startApolloServer = async () => {
     console.log("Running GraphQL Server....");
   });
 };
+app.use(cors());
 
 app.use('/', authMiddleware);
-app.use(cors());
 
 startApolloServer();
 // db_connection
