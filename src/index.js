@@ -12,7 +12,9 @@ app.use('/graphql', graphqlHTTP({
   schema: graphQlSchema,
   graphiql: true,
 }));
-app.listen(4000);
+app.listen(process.env.PORT || 4000, () => {
+  console.log('Hello from graphql');
+});
 
 
 // db_connection
