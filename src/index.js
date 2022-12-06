@@ -1,30 +1,20 @@
 const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
 const authMiddleware = require('./middleware/auth-middleware');
 const graphQlSchema = require("./graphql/schema/index");
+var { graphqlHTTP } = require('express-graphql');
 const cors = require('cors');
 // const isAuth = require("./middleware/is-auth");
 const app = express();
 app.use(express.json());
-
-
-const startApolloServer = async () => {
-
-  const server = new ApolloServer({
-    schema: graphQlSchema,
-  });
-  await server.start();
-  server.applyMiddleware({ app, path: "/graphql" });
-
-  app.listen(process.env.PORT || 5000, () => {
-    console.log("Running GraphQL Server....");
-  });
-};
 app.use(cors());
-
 app.use('/', authMiddleware);
+app.use('/graphql', graphqlHTTP({
+  schema: graphQlSchema,
+  graphiql: true,
+}));
+app.listen(4000);
 
-startApolloServer();
+
 // db_connection
 //   .then(() => {
 //     console.log('Server starting at http://localhost:3000/graphql')
